@@ -1,7 +1,14 @@
 "use strict";
 
+// const sentence = ''
+
 function strBuilder(str) {
-	return strBuilder;
+	return function next(v){
+		if (typeof v == "string") {
+			return strBuilder(str + v);
+		}
+		return str;
+	};
 }
 
 var hello = strBuilder("Hello, ");
