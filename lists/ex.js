@@ -9,11 +9,7 @@ function add(num1, num2) {
 }
 
 function add2(func1, func2) {
-    const num1 = func1()
-    const num2 = func2()
-
-    return add(num1, num2)
-
+    return add(func1(), func2())
 }
 
 function getNumber(num) {
@@ -44,6 +40,18 @@ function addnWithRecursion(arr) {
         return add2(arr[0], addnWithRecursion(arr.slice(1)))
     }
 
-console.log(addnWithIteration([getFive, getTen]))
-console.log(addnWithReduce([getFive, getTen]))
-console.log(addnWithRecursion([getFive, getTen]))
+// console.log(addnWithIteration([getFive, getTen]))
+// console.log(addnWithReduce([getFive, getTen]))
+// console.log(addnWithRecursion([getFive, getTen]))
+
+const vals = [7,4,8,0,10,7,3,2,5,9,12,6,4,1,7,8];
+
+console.log(addnWithReduce(
+    vals
+    .filter(((val, i) => {
+        return vals.slice(i + 1).indexOf(val) === -1
+    }))
+    .filter(val => val % 2 === 0)
+    .map(val => getNumber(val))
+    )
+)
