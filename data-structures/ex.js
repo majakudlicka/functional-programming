@@ -41,9 +41,9 @@ function reduceObj(reducerFn,initialValue,o) {
 	var result = initialValue;
 	var keys = Object.keys(o);
 	for (let key of keys) {
-		reducerFn(initialValue, o[key])
+		result = reducerFn(result, o[key])
 	}
-	return o
+	return result
 }
 
 
